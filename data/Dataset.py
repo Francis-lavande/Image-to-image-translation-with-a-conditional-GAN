@@ -11,7 +11,12 @@ ssl._create_default_https_context = ssl._create_unverified_context
 class MapDataset(Dataset):
     def __init__(self, root_dir):
         self.root_dir = root_dir
+        print(f"Looking for dataset in: {os.path.abspath(self.root_dir)}")
+        if not os.path.exists(self.root_dir):
+            raise FileNotFoundError(f"Dataset path {self.root_dir} does not exist!")
+            
         self.list_files = os.listdir(self.root_dir)
+        print(f"Found {len(self.list_files)} files in {self.root_dir}")
     
     def __len__(self):
         return len(self.list_files)
