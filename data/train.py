@@ -50,8 +50,8 @@ def main():
     L1_LOSS = nn.L1Loss()
 
     if config.LOAD_MODEL:
-        load_checkpoint(config.CHECKPOINT_GEN, gen, opt_gen, config.LEARNING_RATE)
-        load_checkpoint(config.CHECKPOINT_DISC, disc, opt_disc, config.LEARNING_RATE)
+        load_checkpoint(config.CHECKPOINT_GEN, gen, opt_gen)
+        load_checkpoint(config.CHECKPOINT_DISC, disc, opt_disc)
     train_dataset = MapDataset(root_dir="data/maps/train")
     train_loader = DataLoader(train_dataset, batch_size=config.BATCH_SIZE, shuffle=True, num_workers = config.NUM_WORKERS)
     g_scaler = torch.amp.GradScaler("cuda")

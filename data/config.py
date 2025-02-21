@@ -3,7 +3,7 @@ import albumentations as A
 from albumentations.pytorch import ToTensorV2
 
 # Thiết bị sử dụng: GPU nếu có, không thì dùng CPU
-DEVICE = "cuda:0" if torch.cuda.is_available() else "cpu"
+DEVICE = "cpu"
 
 # Các thông số huấn luyện
 LEARNING_RATE = 2e-4
@@ -19,26 +19,6 @@ SAVE_MODEL = True
 CHECKPOINT_DISC = "disc.pth.tar"
 CHECKPOINT_GEN = "gen.pth.tar"
 
-import torch
-import albumentations as A
-from albumentations.pytorch import ToTensorV2
-
-# Thiết bị sử dụng: GPU nếu có, không thì dùng CPU
-DEVICE = "cuda:0" if torch.cuda.is_available() else "cpu"
-
-# Các thông số huấn luyện
-LEARNING_RATE = 2e-4
-BATCH_SIZE = 16
-NUM_WORKERS = 2
-IMAGE_SIZE = 256
-CHANNELS_IMG = 3
-L1_LAMBDA = 100
-LAMBDA_GP = 10
-NUM_EPOCHS = 500
-LOAD_MODEL = False 
-SAVE_MODEL = True
-CHECKPOINT_DISC = "disc.pth.tar"
-CHECKPOINT_GEN = "gen.pth.tar"
 
 both_transform = A.Compose(
     [
